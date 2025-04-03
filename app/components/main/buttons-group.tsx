@@ -18,10 +18,25 @@ const childVariants = {
 
 export default function ButtonsGroup({ buttonLabels }: { buttonLabels: Array<string> }): ReactNode {
 
-    const firstButtonRef = useRef<HTMLButtonElement>(null)
+    const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
+
+    function handleKeyNavigation(index: number, e: React.KeyboardEvent<HTMLButtonElement>) {
+
+        if (buttonRefs.current && e.key === 'Enter') {
+            console.log('enter')
+        }
+
+        if (buttonRefs.current && (e.key === 'ArrowDown' || e.key === 'ArrowRight')) {
+            const nextIndex = (index + 1) % buttonLabels.length
+            buttonRefs.current[nextIndex]?.focus()
+        } else if (buttonRefs.current && (e.key === 'ArrowUp' || e.key === 'ArrowLeft')) {
+            const prevIndex = (index - 1 + buttonLabels.length) % buttonLabels.length
+            buttonRefs.current[prevIndex]?.focus()
+        }
+    }
 
     useLayoutEffect(() => {
-        firstButtonRef.current?.focus()
+        buttonRefs.current[0]?.focus()
     }, [])
 
     return (
@@ -33,10 +48,11 @@ export default function ButtonsGroup({ buttonLabels }: { buttonLabels: Array<str
             {
                 buttonLabels.map((button, i) => (
                     <motion.button
-                        ref={i === 0 ? firstButtonRef : undefined}
+                        ref={el => { buttonRefs.current[i] = el; }}
                         key={`button-${i}-${button}`}
                         variants={childVariants}
                         className="text-button"
+                        onKeyDown={(e) => { handleKeyNavigation(i, e) }}
                     >
                         {`> ${button}`}
                     </motion.button>
