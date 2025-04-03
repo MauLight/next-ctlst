@@ -1,6 +1,11 @@
 import { ReactNode, useLayoutEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 
+interface ButtonsGroupProps {
+    buttonLabels: Array<string>
+    actions: Array<() => void>
+}
+
 const containerVariants = {
     initial: {},
     visible: {
@@ -16,14 +21,14 @@ const childVariants = {
     visible: { opacity: 1 }
 }
 
-export default function ButtonsGroup({ buttonLabels }: { buttonLabels: Array<string> }): ReactNode {
+export default function ButtonsGroup({ buttonLabels, actions }: ButtonsGroupProps): ReactNode {
 
     const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
 
     function handleKeyNavigation(index: number, e: React.KeyboardEvent<HTMLButtonElement>) {
 
         if (buttonRefs.current && e.key === 'Enter') {
-            console.log('enter')
+            actions[index]()
         }
 
         if (buttonRefs.current && (e.key === 'ArrowDown' || e.key === 'ArrowRight')) {
