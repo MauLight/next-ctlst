@@ -14,7 +14,7 @@ export default function EditStoryMenu({ display, itemsNum, children }: EditStory
                         animate={{ height: itemsNum > 2 ? 90.78 + (20.595 + (4 * (itemsNum - 2))) * (itemsNum - 2) : 'auto' }}
                         transition={{ duration: 0.8, delay: 1.6 }}
                         key={'display-edit-menu'} className="w-full h-full">
-                        <MainMenu display={display} text={['What do you want to do?']}>
+                        <MainMenu display={display} text={['Which story do you want to edit?']}>
                             {
                                 children
                             }

@@ -4,7 +4,6 @@ import Link from 'next/link'
 
 interface LinksGroupProps {
     buttonLabels: Array<string>
-    actions: Array<() => void>
 }
 
 const containerVariants = {
@@ -22,15 +21,11 @@ const childVariants = {
     visible: { opacity: 1 }
 }
 
-export default function LinksGroup({ buttonLabels, actions }: LinksGroupProps): ReactNode {
+export default function LinksGroup({ buttonLabels }: LinksGroupProps): ReactNode {
 
-    const buttonRefs = useRef<(HTMLDivElement | null)[]>([])
+    const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
 
-    function handleKeyNavigation(index: number, e: React.KeyboardEvent<HTMLDivElement>) {
-
-        if (buttonRefs.current && e.key === 'Enter') {
-            actions[index]()
-        }
+    function handleKeyNavigation(index: number, e: React.KeyboardEvent<HTMLButtonElement>) {
 
         if (buttonRefs.current && (e.key === 'ArrowDown' || e.key === 'ArrowRight')) {
             const nextIndex = (index + 1) % buttonLabels.length
@@ -53,17 +48,18 @@ export default function LinksGroup({ buttonLabels, actions }: LinksGroupProps): 
             className="flex flex-col items-start gap-y-1">
             {
                 buttonLabels.map((button, i) => (
-                    <motion.div
-                        ref={el => { buttonRefs.current[i] = el; }}
-                        key={`button-${i}-${button}`}
-                        variants={childVariants}
-                        className="text-button"
-                        onKeyDown={(e) => { handleKeyNavigation(i, e) }}
-                    >
-                        <Link href={`/screenwriter/${'somestring'}`}>
+                    <Link key={`button-${i}-${button}`} href={`/screenwriter/${'somestring'}`}>
+                        <motion.button
+                            ref={el => { buttonRefs.current[i] = el; }}
+
+                            variants={childVariants}
+                            className="text-button"
+                            onKeyDown={(e) => { handleKeyNavigation(i, e) }}
+                        >
+
                             {`> ${button}`}
-                        </Link>
-                    </motion.div>
+                        </motion.button>
+                    </Link>
                 ))
             }
         </motion.div>

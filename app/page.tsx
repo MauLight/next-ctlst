@@ -60,7 +60,6 @@ export default function Home() {
             >
               <LinksGroup
                 buttonLabels={savedStories}
-                actions={[() => { }, handleOpenEditStoryMenu]}
               />
             </EditStoryMenu>
 
