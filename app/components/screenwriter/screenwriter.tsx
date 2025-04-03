@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'motion/react'
-import React, { JSX, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { JSX, useCallback, useEffect, useMemo, useState } from 'react'
 import { type BaseEditor, createEditor, Descendant } from 'slate'
-import { Slate, Editable, withReact, type ReactEditor, RenderElementProps } from 'slate-react'
+import { Slate, Editable, withReact, ReactEditor, RenderElementProps } from 'slate-react'
 import { handleKeyDown } from './functions'
 import { PageElement, HeadingElement, CharacterElement, DialogElement, FadeElement, BreakElement, DefaultElement } from './render-elements'
 
@@ -11,7 +11,6 @@ export default function Screenwriter() {
 
     // Create a Slate editor object that won't change across renders.
     const [editor] = useState<BaseEditor & ReactEditor>(() => withReact(createEditor()))
-    const editableRef = useRef(null)
 
     const initialValue: Descendant[] = useMemo(() => editor.children.length > 0 ? editor.children : [
         {
@@ -46,11 +45,9 @@ export default function Screenwriter() {
     const renderElement = useCallback(renderElementFunction, [])
 
     useEffect(() => {
-        if (editableRef.current) {
-            //@ts-expect-error type of Editable is too long to type
-            editableRef.current.focus()
-        }
-    }, [])
+        //* Focus the editor once it mounts
+        ReactEditor.focus(editor)
+    }, [editor])
 
     return (
         <motion.div
@@ -66,7 +63,6 @@ export default function Screenwriter() {
             >
                 <Slate editor={editor} initialValue={initialValue}>
                     <Editable
-                        ref={editableRef}
                         renderElement={renderElement}
                         onKeyDown={(e) => { handleKeyDown(e, editor) }}
                         className="outline-none w-full h-full text-main"
