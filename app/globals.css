@@ -112,6 +112,10 @@ body {
   font-family: JetBrains Mono;
 }
 
+.text-main {
+  @apply text-[0.9rem] text-sky-400;
+}
+
 .text-button {
   @apply text-sky-600 text-[0.9rem] outline-0 focus:border-b;
 }
