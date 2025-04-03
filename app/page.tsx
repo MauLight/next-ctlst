@@ -1,101 +1,96 @@
-import Image from "next/image";
+'use client'
+
+import { useEffect, useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
+import { ReactTyped } from "react-typed"
+import ButtonsGroup from "./components/main/buttons-group"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  const [fadeOut, setFadeOut] = useState<boolean>(false)
+  const [displayMainOptions, setDisplayMainOptions] = useState<boolean>(false)
+
+  function handleDisplayMainOptions() {
+    setTimeout(() => {
+      setDisplayMainOptions(true)
+    }, 1000)
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFadeOut(true)
+    }, 100)
+  }, [])
+
+  return (
+    <main className="w-full min-h-screen flex justify-center items-center">
+      <div className="relative flex justify-center items-center">
+        <AnimatePresence>
+          <motion.section
+            key={1}
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={{ opacity: 1, scaleY: 1, transition: { delay: 0.05 } }}
+            transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
+            className="w-[550px] h-auto min-h-[151px] flex flex-col justify-start items-start gap-y-5 py-6 px-5 border-[1px] border-sky-600 rounded-[15px]">
+            <ReactTyped
+              showCursor={false}
+              className="text-[0.9rem] text-sky-400"
+              startDelay={500}
+              typeSpeed={20}
+              onComplete={handleDisplayMainOptions}
+              strings={['What do you want to do?']} />
+            {/* <motion.textarea
+              onKeyDown={handleSubmitPitch}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.5 }}
+              autoFocus
+              className="w-full grow outline-0 text-[0.9rem] text-sky-300 font-mono resize-none"
+            /> */}
+
+            {/* {
+              pitchSubmitted && (
+                <div className="flex flex-col gap-y-1 min-h-10">
+                  <ReactTyped
+                    showCursor={false}
+                    className="font-mono text-[0.9rem] text-sky-400"
+                    startDelay={500}
+                    typeSpeed={40}
+                    strings={["Okay, let's start."]} />
+
+                  <ReactTyped
+                    showCursor={false}
+                    className="font-mono text-[0.9rem] text-sky-400"
+                    startDelay={1500}
+                    typeSpeed={40}
+                    strings={["Which path do you prefer?"]} />
+                </div>
+              )
+            } */}
+
+            {
+              displayMainOptions && (
+                <ButtonsGroup buttonLabels={['Write a new story.', 'Edit a saved story.']} />
+              )
+            }
+
+          </motion.section>
+          {
+            !fadeOut && (
+              <motion.div
+                key={2}
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 0.05 }}
+                exit={{ opacity: 0 }}
+                className="absolute w-full border-b-[2px] border-sky-600 flex justify-center items-center"
+              >
+                <div className="absolute w-[30px] h-[30px] rounded-full bg-sky-600"></div>
+              </motion.div>
+            )
+          }
+        </AnimatePresence>
+      </div>
+    </main>
   );
 }
