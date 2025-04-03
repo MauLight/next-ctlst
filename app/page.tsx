@@ -53,7 +53,6 @@ export default function Home() {
             </AnimatePresence>
 
             {/* Edit story menu */}
-
             <EditStoryMenu
               display={displayEditStoryMenu}
               itemsNum={savedStories.length}
