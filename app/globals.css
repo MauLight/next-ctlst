@@ -115,6 +115,25 @@ body {
 .text-main {
   @apply text-[0.9rem] text-sky-400;
 }
+.text-def-title {
+  @apply text-[11.089rem] text-sky-600 tracking-tighter capitalize;
+}
+
+.text-def-subtitle {
+  @apply text-[1rem] text-sky-700;
+}
+
+.text-def-body {
+  @apply text-[1.618rem] text-sky-600 text-balance;
+}
+
+.text-bullet-title {
+  @apply text-[2.618rem] leading-11 text-sky-500;
+}
+
+.text-bullet-definition {
+  @apply text-[1.618rem] text-balance text-sky-600;
+}
 
 .text-button {
   @apply text-sky-600 text-[0.9rem] outline-0 focus:border-b;
