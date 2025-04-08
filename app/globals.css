@@ -124,7 +124,7 @@ body {
 }
 
 .text-def-body {
-  @apply text-[1.618rem] text-sky-600 text-balance;
+  @apply text-[1.618rem] text-[#ededed] text-balance;
 }
 
 .text-bullet-title {
@@ -132,7 +132,7 @@ body {
 }
 
 .text-bullet-definition {
-  @apply text-[1.618rem] text-balance text-sky-600;
+  @apply text-[1.618rem] text-balance text-[#ededed];
 }
 
 .text-button {

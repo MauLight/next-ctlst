@@ -1,6 +1,9 @@
 
 import { type ReactNode } from 'react'
 import DefinitionClient from '../components/e-learning/definition-client'
+import BulletDefinitions from '../components/e-learning/bullet-definitions'
+import SentenceHighlights from '../components/e-learning/sentence-highlights'
+import LessonTitle from '../components/e-learning/lesson-title'
 
 const definitions = [
     {
@@ -25,9 +28,30 @@ const definitions = [
     },
 ]
 
+const bgImages = [
+    {
+        id: 1,
+        img: 'https://film-grab.com/wp-content/uploads/photo-gallery/imported_from_media_libray/thematrix058.jpg?bwg=1546895510'
+    },
+    {
+        id: 2,
+        img: 'https://film-grab.com/wp-content/uploads/photo-gallery/ghost032.jpg?bwg=1551280216'
+    },
+    {
+        id: 3,
+        img: 'https://film-grab.com/wp-content/uploads/photo-gallery/Oppenheimer_43.jpg?bwg=1699893936'
+    },
+    {
+        id: 4,
+        img: 'https://film-grab.com/wp-content/uploads/photo-gallery/52%20(106).jpg?bwg=1547148004'
+    }
+]
+
 export default function Page(): ReactNode {
     return (
         <div className='w-full flex flex-col gap-y-20 justify-center items-center'>
+
+            <LessonTitle />
 
             <div className='h-screen flex items-center'>
                 <DefinitionClient
@@ -38,29 +62,30 @@ export default function Page(): ReactNode {
                 />
             </div>
 
-            <div className='min-h-screen flex flex-col justify-center gap-y-20'>
+            <div className='min-h-screen flex items-center'>
 
-                {
-                    definitions.map((def) => (
-                        <div key={def.id} className="w-full max-w-[980px]">
-
-
-                            <div className="w-full h-full">
-                                <div className='flex gap-x-10 items-start'>
-                                    <h2 className='text-[2.618rem] leading-11 text-sky-500'>{def.title}</h2>
-                                    <p className='text-[1.618rem] text-balance text-sky-600'>{def.def}</p>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    ))
-                }
-
+                <BulletDefinitions definitions={definitions} />
 
             </div>
 
+            {/* The number of images must equal the number of highlighted words */}
+            {/* Punctuation will merge into words in this iteration */}
+            <SentenceHighlights key={1} length={4} highlights={['protagonist', 'setting', 'conflict', 'resolution.']} bgImages={bgImages} text='A protagonist in a setting faces conflict that leads to resolution.' />
 
+            <SentenceHighlights key={2} length={1} highlights={['blind', 'soldier', 'enemy', 'troups,', 'wounded', 'allies', 'foreign', 'land', 'escaping', 'alive.']} bgImages={[{
+                id: 5,
+                img: 'https://film-grab.com/wp-content/uploads/photo-gallery/imported_from_media_libray/savingprivateryan050.jpg?bwg=15469650044'
+            },]} text='A blind soldier in a warzone faces enemy troups, wounded allies and a foreign land that leads to escaping alive.' />
+
+            <SentenceHighlights key={3} length={1} highlights={['college', 'graduate', 'teaching', 'internship', 'inhuman', 'students', 'learning', 'their', 'dark', 'objectives.']} bgImages={[{
+                id: 6,
+                img: 'https://film-grab.com/wp-content/uploads/photo-gallery/Hellraiser_(2022)_50.jpg?bwg=1667391909'
+            },]} text='A college graduate in a teaching internship faces inhuman students leading to learning their dark objectives.' />
+
+            <SentenceHighlights key={4} length={1} highlights={['aspiring', 'musician', 'city', 'of', 'social', 'disengagement', 'criticism', 'rejection', 'creation', 'his', 'masterpiece.']} bgImages={[{
+                id: 7,
+                img: 'https://film-grab.com/wp-content/uploads/photo-gallery/Sound_of_Metal_03.jpg?bwg=1629970323'
+            },]} text='An aspiring musician in a city of social disengagement faces criticism and rejection leading to the creation of his masterpiece.' />
 
         </div>
     )
