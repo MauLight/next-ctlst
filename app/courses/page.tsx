@@ -7,12 +7,14 @@ import LessonTitle from '../components/e-learning/lesson-title'
 import Paragraph from '../components/e-learning/paragraph'
 import ComponentWrapper from '../components/common/component-wrapper'
 import Title from '../components/e-learning/title'
+import QuizWritten from '../components/e-learning/quiz-written'
+import QuizMultiple from '../components/e-learning/quiz-multiple'
 
 const definitions = [
     {
         id: 'a1',
         title: 'Protagonist',
-        def: 'From the chatacters list, the one who holds the emotional journey of the story.'
+        def: 'From the characters list, the one who holds the emotional journey of the story.'
     },
     {
         id: 'b2',
@@ -40,7 +42,7 @@ const bgImages = [
 
 export default function Page(): ReactNode {
     return (
-        <div className='w-full flex flex-col gap-y-20 justify-center items-center'>
+        <div className='w-full flex flex-col gap-y-20 justify-center items-center pb-32'>
 
             <LessonTitle />
 
@@ -139,8 +141,15 @@ export default function Page(): ReactNode {
 
             <SentenceHighlights className='h-screen w-full' key={5} length={1} highlights={['conflict', 'action']} bgImages={[{
                 id: 12,
-                img: 'https://film-grab.com/wp-content/uploads/photo-gallery/Underwater_047.jpg?bwg=1601639526'
+                img: 'https://film-grab.com/wp-content/uploads/photo-gallery/imported_from_media_libray/thematrixrevolutions055.jpg?bwg=1546895171'
             },]} text='Conflict sparks action' />
+
+            <div className="w-full flex justify-center">
+                <QuizWritten instructions={['Imply actions for the following two elements of the first example\'s conflict.', 'Faces wounded allies, and faces a foreign land.', 'Two for each of them.']} numAnswers={4} />
+            </div>
+            <div className="w-full flex justify-center">
+                <QuizMultiple answer='b' instructions={['What is the definition of protagonist?']} choices={['From the characters list, the one who holds the psychological journey of the story.', 'From the characters list, the one who holds the emotional journey of the story.', 'From the characters list, the one who holds the physical journey of the story.', 'All of the above.']} />
+            </div>
 
 
         </div>
