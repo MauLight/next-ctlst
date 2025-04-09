@@ -143,6 +143,14 @@ body {
   @apply text-[1.618rem] text-balance text-[#a1a1a1];
 }
 
+.text-quiz-title {
+  @apply text-[2.618rem] text-balance text-center;
+}
+
+.text-quiz-body {
+  @apply text-[1rem] text-balance;
+}
+
 .text-button {
   @apply text-sky-600 text-[0.9rem] outline-0 focus:border-b;
 }
