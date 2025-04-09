@@ -32,7 +32,7 @@ export default function SentenceHighlights({ text, highlights, bgImages, length 
                 {
                     bgImages.map((image, i) => (
                         <div key={`key-${image.id}-${i}-${length}`} className='w-full'>
-                            <Image className='object-cover w-full h-full opacity-18' src={image.img as string} width={980 / 4} height={980} alt='bg' />
+                            <Image className='object-cover w-full h-full opacity-18' src={image.img as string} width={12800} height={720} alt='bg' />
                         </div>
                     ))
                 }

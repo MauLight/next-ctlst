@@ -74,7 +74,7 @@ export default function Page(): ReactNode {
 
             <SentenceHighlights key={2} length={1} highlights={['blind', 'soldier', 'enemy', 'troups,', 'wounded', 'allies', 'foreign', 'land', 'escaping', 'alive.']} bgImages={[{
                 id: 5,
-                img: 'https://film-grab.com/wp-content/uploads/photo-gallery/imported_from_media_libray/savingprivateryan050.jpg?bwg=15469650044'
+                img: 'https://res.cloudinary.com/maulight/image/upload/v1744199716/m82tdufxerrjnwdi7ggt.jpg'
             },]} text='A blind soldier in a warzone faces enemy troups, wounded allies and a foreign land that leads to escaping alive.' />
 
             <SentenceHighlights key={3} length={1} highlights={['college', 'graduate', 'teaching', 'internship', 'inhuman', 'students', 'learning', 'their', 'dark', 'objectives.']} bgImages={[{
