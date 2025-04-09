@@ -127,12 +127,16 @@ body {
   @apply text-[1.618rem] text-[#ededed] text-balance;
 }
 
+.text-paragraph {
+  @apply text-[1.618rem] text-[#ededed] text-balance;
+}
+
 .text-bullet-title {
   @apply text-[2.618rem] leading-11 text-sky-500;
 }
 
 .text-bullet-definition {
-  @apply text-[1.618rem] text-balance text-[#ededed];
+  @apply text-[1.618rem] text-balance text-[#a1a1a1];
 }
 
 .text-button {

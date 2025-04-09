@@ -4,6 +4,8 @@ import DefinitionClient from '../components/e-learning/definition-client'
 import BulletDefinitions from '../components/e-learning/bullet-definitions'
 import SentenceHighlights from '../components/e-learning/sentence-highlights'
 import LessonTitle from '../components/e-learning/lesson-title'
+import Paragraph from '../components/e-learning/paragraph'
+import ComponentWrapper from '../components/common/component-wrapper'
 
 const definitions = [
     {
@@ -62,7 +64,11 @@ export default function Page(): ReactNode {
                 />
             </div>
 
-            <div className='min-h-screen flex items-center'>
+            <div className='min-h-screen flex flex-col justify-center gap-y-20'>
+
+                <ComponentWrapper>
+                    <Paragraph text='At its most basic, a story has four distinctive parts:' />
+                </ComponentWrapper>
 
                 <BulletDefinitions definitions={definitions} />
 
