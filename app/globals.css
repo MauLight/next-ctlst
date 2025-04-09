@@ -127,6 +127,10 @@ body {
   @apply text-[1.618rem] text-[#ededed] text-balance;
 }
 
+.text-title {
+  @apply text-[11.089rem] text-sky-400 text-balance;
+}
+
 .text-paragraph {
   @apply text-[1.618rem] text-[#ededed] text-balance;
 }

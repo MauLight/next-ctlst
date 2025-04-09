@@ -9,9 +9,10 @@ interface SentenceHighlightsProps {
     highlights: Array<string>
     bgImages: Array<Record<string, string | number>>
     length: number
+    className?: string
 }
 
-export default function SentenceHighlights({ text, highlights, bgImages, length }: SentenceHighlightsProps) {
+export default function SentenceHighlights({ text, highlights, bgImages, length, className }: SentenceHighlightsProps) {
 
     const textArray = text.split(' ')
     const [style, setStyle] = useState<string | null>(null)
@@ -23,17 +24,21 @@ export default function SentenceHighlights({ text, highlights, bgImages, length 
     }, [])
 
     return (
-        <div className='relative h-screen flex items-center overflow-hidden'>
+        <div className={`relative ${className} flex justify-center items-center overflow-hidden`}>
 
-            <div className='flex flex-wrap items-center z-10 text-[1.618rem] gap-x-2 w-full max-w-[980px]'>
+            <div className='w-full max-w-[908px]'>
 
-                {
-                    textArray.map((word, i) => {
-                        const highlight = highlights.find(elem => elem.toLowerCase() === word.toLowerCase())
-                        if (highlight) return <b className='text-sky-400' key={`key-${word}-${i}`}>{word}</b>
-                        else return <p key={`key-${word}-${i}`}>{word}</p>
-                    })
-                }
+                <div className='flex flex-wrap justify-center items-center z-10 text-[1.618rem] gap-x-2'>
+
+                    {
+                        textArray.map((word, i) => {
+                            const highlight = highlights.find(elem => elem.toLowerCase() === word.toLowerCase())
+                            if (highlight) return <b className='text-sky-400' key={`key-${word}-${i}`}>{word}</b>
+                            else return <p key={`key-${word}-${i}`}>{word}</p>
+                        })
+                    }
+
+                </div>
 
             </div>
 
@@ -43,7 +48,7 @@ export default function SentenceHighlights({ text, highlights, bgImages, length 
                         {
                             bgImages.map((image, i) => (
 
-                                <Image key={`key-${image.id}-${i}-${length}`} className='col-span-1 object-cover w-full h-full opacity-18' src={image.img as string} width={1280 / length} height={720} alt='bg' />
+                                <Image key={`key-${image.id}-${i}-${length}`} className='col-span-1 object-cover w-full h-full opacity-18' src={image.img as string} width={1280} height={720} alt='bg' />
 
                             ))
                         }

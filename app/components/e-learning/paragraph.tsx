@@ -1,8 +1,8 @@
 import { type ReactNode } from 'react'
 
-export default function Paragraph({ text }: { text: string }): ReactNode {
+export default function Paragraph({ text, padding }: { text: string, padding?: string }): ReactNode {
     return (
-        <div className='w-full py-10'>
+        <div className={`w-full ${padding ? padding : 'py-10'}`}>
             <p className='text-paragraph'>
                 {
                     text
