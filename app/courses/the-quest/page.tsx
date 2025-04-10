@@ -73,9 +73,9 @@ export default function Page(): ReactNode {
 
             <ComponentWrapper>
                 <div className='w-full flex flex-col gap-y-8'>
-                    <Dropdown title='Course Introduction' lessons={lessons1} />
-                    <Dropdown title='The Basics of Story' lessons={lessons2} />
-                    <Dropdown title='Course Introduction' lessons={lessons3} />
+                    <Dropdown module={1} title='Course Introduction' lessons={lessons1} />
+                    <Dropdown module={2} title='The Basics of Story' lessons={lessons2} />
+                    <Dropdown module={3} title='Course Introduction' lessons={lessons3} />
                 </div>
             </ComponentWrapper>
 

@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
+import { useRouter } from 'next/navigation'
 
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
 
@@ -14,6 +15,7 @@ interface LessonProps {
 interface DropdownProps {
     title: string,
     lessons: Array<LessonProps>
+    module: number
 }
 
 const containerVariants = {
@@ -34,9 +36,10 @@ const childVariants = {
     exit: { height: 0, opacity: 0 }
 }
 
-export default function Dropdown({ title, lessons }: DropdownProps): ReactNode {
+export default function Dropdown({ title, lessons, module }: DropdownProps): ReactNode {
 
     const [hover, setHover] = useState<boolean>(false)
+    const router = useRouter()
 
     return (
 
@@ -71,7 +74,8 @@ export default function Dropdown({ title, lessons }: DropdownProps): ReactNode {
                             className='w-full flex flex-col justify-center overflow-hidden gap-y-3'>
                             {
                                 lessons.map((lesson, i) => (
-                                    <motion.div
+                                    <motion.button
+                                        onClick={() => { router.push(`/courses/the-quest/module${module}/${i + 1}`) }}
                                         key={lesson.id}
                                         variants={childVariants}
                                         className='flex justify-start items-center gap-x-2 text-text-secondary hover:text-sky-400 cursor-pointer'>
@@ -79,7 +83,7 @@ export default function Dropdown({ title, lessons }: DropdownProps): ReactNode {
                                             {i + 1}
                                         </div>
                                         <p>{lesson.text}</p>
-                                    </motion.div>
+                                    </motion.button>
                                 ))
                             }
                         </motion.div>
