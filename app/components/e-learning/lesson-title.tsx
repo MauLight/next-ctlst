@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react'
+import VideoPlayer from './video-player'
 
 export default function LessonTitle(): ReactNode {
     return (
@@ -14,6 +15,8 @@ export default function LessonTitle(): ReactNode {
                     <div key={i} className='absolute top-0 left-0 w-full h-full bg-radial from-transparent from-10% to-[#0a0a0a]'></div>
                 ))
             }
+
+            <VideoPlayer />
         </div>
     )
 }

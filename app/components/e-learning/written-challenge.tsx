@@ -24,7 +24,7 @@ const initialValue: Descendant[] = [
     },
 ]
 
-export default function WrittenChallenge(): ReactNode {
+export default function WrittenChallenge({ callback }: { callback: () => void }): ReactNode {
 
     const [editor] = useState(() => withReact(createEditor()))
     const [saving, setSaving] = useState<boolean>(false)
@@ -58,6 +58,8 @@ export default function WrittenChallenge(): ReactNode {
 
                 <div className='flex flex-col gap-y-2'>
 
+                    <small className={`w-full flex justify-end px-5 ${saving ? 'text-green-500' : 'text-sky-500'}`}>{saving ? 'saving' : 'saved'}</small>
+
                     <Slate
                         onChange={(value) => { debouncedSave(value) }}
                         editor={editor}
@@ -67,7 +69,9 @@ export default function WrittenChallenge(): ReactNode {
                             className='w-full min-h-[400px] p-10 border rounded-[20px] outline-0'
                         />
                     </Slate>
-                    <small className={`w-full flex justify-end px-5 ${saving ? 'text-green-500' : 'text-sky-500'}`}>{saving ? 'saving' : 'saved'}</small>
+
+                    <button onClick={callback} className='ml-auto px-4 h-10 border rounded-[6px] mt-5'>Submit</button>
+
                 </div>
 
             </div>

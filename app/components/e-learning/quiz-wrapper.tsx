@@ -58,7 +58,23 @@ export default function QuizWrapper(): ReactNode {
                             transition={{ duration: 0.2 }}
                             exit={{ opacity: 0 }}
                             className="w-full flex justify-center">
-                            <WrittenChallenge />
+                            <WrittenChallenge callback={() => { setStep(4) }} />
+                        </motion.div>
+                    )
+                }
+                {
+                    step === 4 && (
+                        <motion.div
+                            key={2}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.2 }}
+                            exit={{ opacity: 0 }}
+                            className="w-full flex justify-center">
+                            <div className='w-[400px] h-[300px] flex flex-col justify-center items-center border border-sky-500 rounded-[25px]'>
+                                <h1 className='text-[2.618rem] text-balance text-center text-sky-500'>Great Job!</h1>
+                                <button className='px-4 h-10 border border-sky-500 text-sky-500 rounded-[6px] mt-5'>Continue</button>
+                            </div>
                         </motion.div>
                     )
                 }
