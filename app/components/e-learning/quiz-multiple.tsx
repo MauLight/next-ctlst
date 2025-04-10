@@ -11,11 +11,12 @@ interface QuizWrittenProps {
     instructions: Array<string>
     choices: Array<string>
     answer: string
+    callback: () => void
 }
 
 const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i))
 
-export default function QuizMultiple({ instructions, choices, answer }: QuizWrittenProps): ReactNode {
+export default function QuizMultiple({ instructions, choices, answer, callback }: QuizWrittenProps): ReactNode {
 
     const [userChoice, setUserChoice] = useState<string | null>(null)
     const [success, setSuccess] = useState<boolean>(false)
@@ -29,10 +30,13 @@ export default function QuizMultiple({ instructions, choices, answer }: QuizWrit
         if (userChoice === answer) {
             setTimeout(() => {
                 setSuccess(true)
+                setTimeout(() => {
+                    callback()
+                }, 2000)
             }, 1000)
         }
 
-    }, [userChoice, answer])
+    }, [userChoice, answer, callback])
 
     return (
         <ComponentWrapper>

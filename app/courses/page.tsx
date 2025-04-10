@@ -7,9 +7,7 @@ import LessonTitle from '../components/e-learning/lesson-title'
 import Paragraph from '../components/e-learning/paragraph'
 import ComponentWrapper from '../components/common/component-wrapper'
 import Title from '../components/e-learning/title'
-import QuizWritten from '../components/e-learning/quiz-written'
-import QuizMultiple from '../components/e-learning/quiz-multiple'
-import WrittenChallenge from '../components/e-learning/written-challenge'
+import QuizWrapper from '../components/e-learning/quiz-wrapper'
 
 const definitions = [
     {
@@ -145,17 +143,7 @@ export default function Page(): ReactNode {
                 img: 'https://film-grab.com/wp-content/uploads/photo-gallery/imported_from_media_libray/thematrixrevolutions055.jpg?bwg=1546895171'
             },]} text='Conflict sparks action' />
 
-            <div className="w-full flex justify-center">
-                <QuizWritten instructions={['Imply actions for the following two elements of the first example\'s conflict.', 'Faces wounded allies, and faces a foreign land.', 'Two for each of them.']} numAnswers={4} />
-            </div>
-            <div className="w-full flex justify-center">
-                <QuizMultiple answer='b' instructions={['What is the definition of protagonist?']} choices={['From the characters list, the one who holds the psychological journey of the story.', 'From the characters list, the one who holds the emotional journey of the story.', 'From the characters list, the one who holds the physical journey of the story.', 'All of the above.']} />
-            </div>
-
-            <div className="w-full flex justify-center">
-                <WrittenChallenge />
-            </div>
-
+            <QuizWrapper />
 
         </div>
     )
