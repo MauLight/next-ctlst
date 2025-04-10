@@ -16,6 +16,7 @@ interface DropdownProps {
     title: string,
     lessons: Array<LessonProps>
     module: number
+    theme?: string
 }
 
 const containerVariants = {
@@ -36,7 +37,7 @@ const childVariants = {
     exit: { height: 0, opacity: 0 }
 }
 
-export default function Dropdown({ title, lessons, module }: DropdownProps): ReactNode {
+export default function Dropdown({ title, lessons, module, theme }: DropdownProps): ReactNode {
 
     const [hover, setHover] = useState<boolean>(false)
     const router = useRouter()
@@ -47,9 +48,9 @@ export default function Dropdown({ title, lessons, module }: DropdownProps): Rea
         <motion.div
             onHoverStart={() => { setHover(true) }}
             onHoverEnd={() => { setHover(false) }}
-            className='group w-full flex flex-col justify-center overflow-hidden gap-y-5'>
+            className='group w-full flex flex-col justify-center overflow-hidden gap-y-5 z-20'>
 
-            <div className="flex w-full justify-between items-center">
+            <div className={`flex w-full justify-between items-center ${theme === 'dark' ? 'text-black' : ''}`}>
                 <h1>{title}</h1>
                 {
                     hover ? (
@@ -79,10 +80,10 @@ export default function Dropdown({ title, lessons, module }: DropdownProps): Rea
                                         key={lesson.id}
                                         variants={childVariants}
                                         className='flex justify-start items-center gap-x-2 text-text-secondary hover:text-sky-400 cursor-pointer'>
-                                        <div className='w-7 h-7 flex justify-center items-center shrink-0 rounded-full border border-border text-[0.8rem]'>
+                                        <div className={`w-7 h-7 flex justify-center items-center shrink-0 rounded-full border border-border text-[0.8rem] ${theme === 'dark' ? 'text-black' : ''}`}>
                                             {i + 1}
                                         </div>
-                                        <p>{lesson.text}</p>
+                                        <p className={theme === 'dark' ? 'text-black text-start' : 'text-start'}>{lesson.text}</p>
                                     </motion.button>
                                 ))
                             }
