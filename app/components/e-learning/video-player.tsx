@@ -13,7 +13,7 @@ export default function VideoPlayer(): ReactNode {
             <AnimatePresence mode='wait'>
                 {
                     !play ? (
-                        <PlayCircleIcon key={1} onClick={() => { setPlay(true) }} className='w-30 h-30 text-sky-400 glass rounded-full' />
+                        <PlayCircleIcon key={1} onClick={() => { setPlay(true) }} className='w-20 h-20 text-sky-400 glass rounded-full cursor-pointer' />
                     )
                         :
                         (
@@ -24,7 +24,7 @@ export default function VideoPlayer(): ReactNode {
                                 transition={{ duration: 0.2 }}
                                 exit={{ opacity: 0 }}
                                 className='w-[720px] h-[480px] border border-sky-400 shadow-xl rounded-[25px] bg-black z-10 overflow-hidden'>
-                                <video autoPlay muted loop controls src='lesson1.webm' className='w-full h-full'></video>
+                                <video autoPlay muted loop controls src='/lesson1.webm' className='w-full h-full'></video>
                             </motion.div>
                         )
                 }

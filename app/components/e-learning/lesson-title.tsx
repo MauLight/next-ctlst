@@ -9,7 +9,7 @@ export default function LessonTitle(): ReactNode {
                 <h1 className='text-[17.942rem] leading-65 tracking-tight'>What is a story?</h1>
             </div>
 
-            <video autoPlay muted loop src='lesson1.webm' className='absolute top-0 left-0 w-full h-full object-cover opacity-30' />
+            <video autoPlay muted loop src='/lesson1.webm' className='absolute top-0 left-0 w-full h-full object-cover opacity-30' />
             {
                 Array.from({ length: 3 }).map((_, i) => (
                     <div key={i} className='absolute top-0 left-0 w-full h-full bg-radial from-transparent from-10% to-[#0a0a0a]'></div>

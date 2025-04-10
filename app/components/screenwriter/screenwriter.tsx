@@ -14,7 +14,7 @@ export default function Screenwriter() {
 
     const initialValue: Descendant[] = useMemo(() => editor.children.length > 0 ? editor.children : [
         {
-            type: 'description',
+            type: 'paragraph',
             children: [{ text: '' }]
         }
     ], [editor.children])
