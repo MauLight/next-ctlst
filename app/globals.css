@@ -87,6 +87,13 @@ video {
 
 @import "tailwindcss";
 
+@theme {
+  --color-border: #292929;
+  --color-card: #080808;
+  --color-text-primary: #ededed;
+  --color-text-secondary: #a1a1a1;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

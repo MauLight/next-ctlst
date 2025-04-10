@@ -28,7 +28,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="w-full min-h-screen flex justify-center items-center">
+    <main className="w-full h-screen flex justify-center items-center">
       <div className="relative flex justify-center items-center">
         <AnimatePresence>
 

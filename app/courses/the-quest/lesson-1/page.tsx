@@ -1,5 +1,6 @@
 
 import { type ReactNode } from 'react'
+
 import DefinitionClient from '@/app/components/e-learning/definition-client'
 import BulletDefinitions from '@/app/components/e-learning/bullet-definitions'
 import SentenceHighlights from '@/app/components/e-learning/sentence-highlights'
@@ -8,6 +9,7 @@ import Paragraph from '@/app/components/e-learning/paragraph'
 import ComponentWrapper from '@/app/components/common/component-wrapper'
 import Title from '@/app/components/e-learning/title'
 import QuizWrapper from '@/app/components/e-learning/quiz-wrapper'
+import CompletionDisplay from '@/app/components/e-learning/completion-display'
 
 const definitions = [
     {
@@ -40,8 +42,10 @@ const bgImages = [
 ]
 
 export default function Page(): ReactNode {
+
     return (
-        <div className='w-full flex flex-col gap-y-20 justify-center items-center pb-32'>
+        <div className='w-full flex flex-col gap-y-20 justify-center items-center'>
+            <CompletionDisplay />
 
             <LessonTitle />
 
