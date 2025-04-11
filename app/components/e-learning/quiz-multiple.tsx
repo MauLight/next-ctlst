@@ -11,7 +11,7 @@ interface QuizWrittenProps {
     instructions: Array<string>
     choices: Array<string>
     answer: string
-    callback: () => void
+    callback?: () => void
 }
 
 const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i))
@@ -27,12 +27,17 @@ export default function QuizMultiple({ instructions, choices, answer, callback }
 
     useEffect(() => {
 
-        if (userChoice === answer) {
+        if (userChoice === answer && callback) {
             setTimeout(() => {
                 setSuccess(true)
                 setTimeout(() => {
                     callback()
                 }, 2000)
+            }, 1000)
+        }
+        if (userChoice === answer) {
+            setTimeout(() => {
+                setSuccess(true)
             }, 1000)
         }
 

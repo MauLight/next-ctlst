@@ -4,7 +4,7 @@ import { useState, type ReactNode } from 'react'
 import { PlayCircleIcon } from '@heroicons/react/24/solid'
 import { AnimatePresence, motion } from 'motion/react'
 
-export default function VideoPlayer(): ReactNode {
+export default function VideoPlayer({ video }: { video: string }): ReactNode {
 
     const [play, setPlay] = useState<boolean>(false)
 
@@ -24,7 +24,7 @@ export default function VideoPlayer(): ReactNode {
                                 transition={{ duration: 0.2 }}
                                 exit={{ opacity: 0 }}
                                 className='w-[720px] h-[480px] border border-sky-400 shadow-xl rounded-[25px] bg-black z-10 overflow-hidden'>
-                                <video autoPlay muted loop controls src='/lesson1.webm' className='w-full h-full'></video>
+                                <video autoPlay muted loop controls src={video} className='w-full h-full'></video>
                             </motion.div>
                         )
                 }

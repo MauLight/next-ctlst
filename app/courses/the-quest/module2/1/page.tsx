@@ -47,7 +47,7 @@ export default function Page(): ReactNode {
         <div className='w-full flex flex-col gap-y-20 justify-center items-center'>
             <CompletionDisplay />
 
-            <LessonTitle />
+            <LessonTitle title='What is a story?' lesson='lesson 1' bgVideo='/lesson1.webm' />
 
             <div className='h-screen flex items-center'>
                 <DefinitionClient
