@@ -1,22 +1,26 @@
 'use client'
 
 import Image from 'next/image'
-import { type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { motion } from 'motion/react'
+import { Switch } from '../common/switch'
 
 const images = [
     {
         text1: 'Sand',
+        text2: 'Soft',
         id: 'a1',
         image: 'https://images.unsplash.com/photo-1740004731264-3cde5c198cc2'
     },
     {
         text1: 'Mountain',
+        text2: 'Cold',
         id: 'b2',
         image: 'https://images.unsplash.com/photo-1734630630491-458df4f38213'
     },
     {
         text1: 'Water',
+        text2: 'Refreshing',
         id: 'c3',
         image: 'https://images.unsplash.com/photo-1738694114013-4a92b1851d3b'
     },
@@ -31,14 +35,21 @@ const childVariants = {
     initial: { opacity: 0 },
     hover: {
         opacity: 0.8,
-        transition: { duration: 1.5 }
+        transition: { duration: 1.2 }
     }
 }
 
 export default function TripleImageComponent(): ReactNode {
+
+    const [clicked, setClicked] = useState<boolean>(false)
+
     return (
         <>
-
+            <div className="w-full h-[100px] flex justify-center items-start gap-x-5">
+                <p>Concrete</p>
+                <Switch clicked={clicked} handleClick={() => { setClicked(!clicked) }} />
+                <p>Abstract</p>
+            </div>
             <div className='w-full h-[400px] grid grid-cols-3 gap-x-10'>
                 {
                     images.map((image, i) => (
@@ -47,7 +58,7 @@ export default function TripleImageComponent(): ReactNode {
                             initial='initial'
                             whileHover='hover'
                             key={image.id + '-' + i}
-                            className='relative rounded-[25px] overflow-hidden h-full cursor-progress'
+                            className='relative rounded-[25px] overflow-hidden h-full cursor-pointer'
                         >
                             <Image className='h-full rounded-[25px]' src={image.image} width={980 / 3} height={600} alt='image' />
                             <div className='absolute top-0 left-0 bg-radial from-transparent from-5% to-black to-85% w-full h-full opacity-30 z-10'></div>
@@ -57,7 +68,7 @@ export default function TripleImageComponent(): ReactNode {
                                 className='absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black z-20'>
                                 <motion.p
                                     variants={childVariants}
-                                >{image.text1}</motion.p>
+                                >{clicked ? image.text2 : image.text1}</motion.p>
                             </motion.div>
                         </motion.div>
                     ))

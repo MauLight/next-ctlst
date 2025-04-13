@@ -58,7 +58,7 @@ export default function Page(): ReactNode {
                 </ComponentWrapper>
             </div>
 
-            <div className="w-full h-screen flex items-center justify-center border">
+            <div className="w-full h-screen flex items-center justify-center">
                 <ComponentWrapper>
                     <TripleImageComponent />
                 </ComponentWrapper>
