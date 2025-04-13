@@ -58,7 +58,7 @@ export default function QuizWrapper(): ReactNode {
                             transition={{ duration: 0.2 }}
                             exit={{ opacity: 0 }}
                             className="w-full flex justify-center">
-                            <WrittenChallenge callback={() => { setStep(4) }} />
+                            <WrittenChallenge title='Challenge' instructions={['Write at least one and up to three story ideas using the structure we proposed.', 'A protagonist in a setting faces conflict leading to a resolution.']} callback={() => { setStep(4) }} />
                         </motion.div>
                     )
                 }

@@ -6,6 +6,13 @@ import { BaseEditor, createEditor, Descendant } from 'slate'
 import { Slate, Editable, withReact, ReactEditor } from 'slate-react'
 import { useDebouncedCallback } from 'use-debounce'
 
+interface WrittenChallengeProps {
+    callback: () => void
+    noBorder?: boolean
+    title: string
+    instructions: Array<string>
+}
+
 type CustomElement = { type: 'paragraph'; children: CustomText[] }
 type CustomText = { text: string }
 
@@ -24,7 +31,7 @@ const initialValue: Descendant[] = [
     },
 ]
 
-export default function WrittenChallenge({ callback }: { callback: () => void }): ReactNode {
+export default function WrittenChallenge({ callback, noBorder, title, instructions }: WrittenChallengeProps): ReactNode {
 
     const [editor] = useState(() => withReact(createEditor()))
     const [saving, setSaving] = useState<boolean>(false)
@@ -44,14 +51,17 @@ export default function WrittenChallenge({ callback }: { callback: () => void })
 
     return (
         <ComponentWrapper>
-            <div className="w-full px-10 py-12 border border-sky-500 rounded-[25px] flex flex-col gap-y-10">
+            <div className={`w-full px-10 py-12 rounded-[25px] flex flex-col gap-y-10 ${noBorder ? '' : 'border border-sky-500 '}`}>
 
                 <div className='flex flex-col gap-y-5'>
 
-                    <h1 className='text-quiz-title'>Challenge</h1>
+                    <h1 className='text-quiz-title'>{title}</h1>
                     <div className='flex flex-col gap-y-3'>
-                        <p className='text-quiz-body'>Write at least one and up to three story ideas using the structure we proposed.</p>
-                        <p>A protagonist in a setting faces conflict leading to a resolution.</p>
+                        {
+                            instructions.map((instruction, i) => (
+                                <p key={instruction + '-' + i} className='text-quiz-body'>{instruction}</p>
+                            ))
+                        }
                     </div>
 
                 </div>
@@ -66,11 +76,11 @@ export default function WrittenChallenge({ callback }: { callback: () => void })
                         initialValue={initialValue}
                     >
                         <Editable
-                            className='w-full min-h-[400px] p-10 border rounded-[20px] outline-0'
+                            className='w-full min-h-[220px] p-10 border border-border rounded-[20px] outline-0'
                         />
                     </Slate>
 
-                    <button onClick={callback} className='ml-auto px-4 h-10 border rounded-[6px] mt-5'>Submit</button>
+                    <button onClick={callback} className='ml-auto px-4 h-10 border border-sky-500 text-sky-400 rounded-[6px] mt-5'>Submit</button>
 
                 </div>
 

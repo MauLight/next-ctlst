@@ -2,7 +2,6 @@
 import { type ReactNode } from 'react'
 
 import DefinitionClient from '@/app/components/e-learning/definition-client'
-import SentenceHighlights from '@/app/components/e-learning/sentence-highlights'
 import LessonTitle from '@/app/components/e-learning/lesson-title'
 import Paragraph from '@/app/components/e-learning/paragraph'
 import ComponentWrapper from '@/app/components/common/component-wrapper'
@@ -10,13 +9,7 @@ import Title from '@/app/components/e-learning/title'
 import CompletionDisplay from '@/app/components/e-learning/completion-display'
 import QuizMultiple from '@/app/components/e-learning/quiz-multiple'
 import TripleImageComponent from '@/app/components/e-learning/triple-image-component'
-
-const bgImages = [
-    {
-        id: 1,
-        img: 'https://film-grab.com/wp-content/uploads/2024/04/Dune-Part-2-58.jpg'
-    }
-]
+import QuizWrapperImage from '@/app/components/e-learning/quiz-wrapper-with-image'
 
 export default function Page(): ReactNode {
 
@@ -64,6 +57,42 @@ export default function Page(): ReactNode {
                 </ComponentWrapper>
             </div>
 
+            <div className='flex items-center'>
+                <ComponentWrapper>
+                    <Paragraph text="In a nutshell:" />
+                    <Paragraph padding='py-2' text='- Concrete words name what they refer to.' />
+                    <Paragraph padding='pt-2 pb-10' text='- Abstract words describe what they refer to.' />
+                    <Paragraph text="Words that have a direct connection with the real world are in the concrete side of the spectrum, and concepts that exist only as ideas are in the abstract side of the spectrum." />
+                </ComponentWrapper>
+            </div>
+
+            <div className='h-screen flex flex-col justify-center w-full items-center'>
+                <QuizMultiple
+                    answer='b'
+                    instructions={['Which of the following is the most abstract word?']}
+                    choices={['Blue', 'Resilient', 'Electric', 'Atmosphere']}
+                />
+            </div>
+
+            <div className='flex items-center'>
+                <ComponentWrapper>
+                    <Paragraph text="But In the case of screenwriting it gets a bit more complicated than that." />
+                    <Paragraph text='This is because screenwriting is all about using concrete words to describe abstract ideas.' />
+                </ComponentWrapper>
+            </div>
+
+
+            <div className='w-full h-[400px] flex justify-center items-center'>
+                <ComponentWrapper>
+                    <Title text='What?' />
+                </ComponentWrapper>
+            </div>
+
+            <div className='flex items-center'>
+                <ComponentWrapper>
+                    <Paragraph text="Yes, to be a good screenwriter you need to get comfortable describing with concrete words." />
+                </ComponentWrapper>
+            </div>
 
             <div className='w-full h-[400px] flex justify-center items-center'>
                 <ComponentWrapper>
@@ -73,68 +102,11 @@ export default function Page(): ReactNode {
 
             <div className='flex items-center'>
                 <ComponentWrapper>
-                    <Paragraph text="Because knowing these elements doesn't help you choose the right ones." />
-                    <Paragraph text='In other words, how do you know if you should write that idea you had?' />
+                    <Paragraph text="Because you can't shoot ideas, you can only shoot using the film medium (audio, image and the yuxtaposition of these elements)." />
                 </ComponentWrapper>
             </div>
 
-            {/* The number of images must equal the number of highlighted words */}
-            {/* Punctuation will merge into words in this iteration */}
-            <SentenceHighlights className='h-screen' key={'value of story'} length={1} highlights={['value', 'story?']} bgImages={bgImages} text='What is the value of your story?' />
-
-            <div className='flex items-center'>
-                <ComponentWrapper>
-                    <Paragraph text="To understand the value of your story, first we need to talk about the movie industry, and in a more general sense, how cultural industries work." />
-                </ComponentWrapper>
-            </div>
-
-            <div className='h-screen flex items-center'>
-                <DefinitionClient
-                    title='Cultural Industry'
-                    sufix='cul·​tur·​al in·​dus·​try'
-                    def='A firm or company that produces cultural products.'
-                    bg='https://film-grab.com/wp-content/uploads/2024/03/The-Book-of-Clarence01.jpg'
-                />
-            </div>
-
-            <div className='h-screen flex items-center'>
-                <DefinitionClient
-                    title='Cultural Product'
-                    sufix='cul·​tur·​al prod·​uct'
-                    def='Goods and services that are valued for their meaning alone.'
-                    bg='https://film-grab.com/wp-content/uploads/2024/03/The-Book-of-Clarence01.jpg'
-                />
-            </div>
-
-            <div className='flex flex-col items-center w-full h-[200px]'>
-
-                <ComponentWrapper>
-                    <Paragraph text='If it can go "out of style" it is a cultural product.' />
-                </ComponentWrapper>
-
-            </div>
-            <div className='h-screen flex flex-col justify-center w-full items-center'>
-                <QuizMultiple
-                    answer='c'
-                    instructions={['Which of the following is a cultural product?']}
-                    choices={['An orange', 'A pencil', 'Your screenplay', 'Your phone']}
-                />
-            </div>
-
-            <div className='flex flex-col items-center w-full h-[200px]'>
-
-                <ComponentWrapper>
-                    <Paragraph text='Production companies are cultural industries that produce and sell meaning through cultural products.' />
-                </ComponentWrapper>
-
-            </div>
-
-            <SentenceHighlights className='h-screen' key={'meaning'} length={1} highlights={['value', 'story?']} bgImages={[
-                {
-                    id: 1,
-                    img: 'https://film-grab.com/wp-content/uploads/photo-gallery/Babylon_48.jpg?bwg=1680013867'
-                }
-            ]} text='Cultural products are valued for their meaning.' />
+            <QuizWrapperImage />
 
         </div>
     )
