@@ -45,6 +45,11 @@
           "id": "c3",
           "text": "Introduction to meaning",
           "completion": 90
+        },
+        {
+          "id": "d4",
+          "text": "The right words",
+          "completion": 90
         }
       ]
     },

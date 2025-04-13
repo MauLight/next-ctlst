@@ -1,13 +1,16 @@
+'use client'
+
 import { type ReactNode } from 'react'
 import ComponentWrapper from '../common/component-wrapper'
 
 interface QuizWrittenProps {
     instructions: Array<string>
     numAnswers: number
-    callback: () => void
+    callback?: () => void
+    maxWidth?: string
 }
 
-export default function QuizWritten({ instructions, numAnswers, callback }: QuizWrittenProps): ReactNode {
+export default function QuizWritten({ maxWidth, instructions, numAnswers, callback }: QuizWrittenProps): ReactNode {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault()
@@ -17,7 +20,7 @@ export default function QuizWritten({ instructions, numAnswers, callback }: Quiz
         const answers = Array.from({ length: numAnswers }, (_, i) => formData.get(`Answer ${i + 1}`))
         const missingAnswers = answers.find((answer) => typeof answer === 'string' && answer === '')
 
-        if (!missingAnswers && typeof missingAnswers !== 'string') {
+        if (!missingAnswers && typeof missingAnswers !== 'string' && callback) {
             callback()
         }
     }
@@ -25,7 +28,7 @@ export default function QuizWritten({ instructions, numAnswers, callback }: Quiz
     return (
         <ComponentWrapper>
             <div className="w-full flex justify-center">
-                <div className="w-full max-w-[500px] h-auto px-10 py-12 border border-sky-500 rounded-[25px] flex flex-col gap-y-5">
+                <div className={`${maxWidth ? maxWidth : 'max-w-[500px]'} w-full h-auto px-10 py-12 border border-sky-500 rounded-[25px] flex flex-col gap-y-5`}>
                     <h1 className='text-[2.618rem] text-balance text-center'>Quiz</h1>
 
                     <div className='flex flex-col gap-y-3'>
@@ -48,7 +51,7 @@ export default function QuizWritten({ instructions, numAnswers, callback }: Quiz
                             ))
                         }
 
-                        <button type="submit" className='ml-auto px-4 h-10 border rounded-[6px] mt-10'>Submit</button>
+                        <button type="submit" className='ml-auto px-4 h-10 border border-sky-500 text-sky-400 rounded-[6px] mt-10'>Submit</button>
                     </form>
                 </div>
             </div>
