@@ -11,6 +11,28 @@ import QuizMultiple from '@/app/components/e-learning/quiz-multiple'
 import TripleImageComponent from '@/app/components/e-learning/triple-image-component'
 import QuizWrapperImage from '@/app/components/e-learning/quiz-wrapper-with-image'
 
+
+const images = [
+    {
+        text1: 'Sand',
+        text2: 'Soft',
+        id: 'a1',
+        image: 'https://images.unsplash.com/photo-1740004731264-3cde5c198cc2'
+    },
+    {
+        text1: 'Mountain',
+        text2: 'Cold',
+        id: 'b2',
+        image: 'https://images.unsplash.com/photo-1734630630491-458df4f38213'
+    },
+    {
+        text1: 'Water',
+        text2: 'Refreshing',
+        id: 'c3',
+        image: 'https://images.unsplash.com/photo-1738694114013-4a92b1851d3b'
+    },
+]
+
 export default function Page(): ReactNode {
 
     return (
@@ -53,7 +75,7 @@ export default function Page(): ReactNode {
 
             <div className="w-full h-screen flex items-center justify-center">
                 <ComponentWrapper>
-                    <TripleImageComponent />
+                    <TripleImageComponent showSwitch images={images} />
                 </ComponentWrapper>
             </div>
 

@@ -12,7 +12,7 @@ interface DefinitionProps {
 
 export default function DefinitionClient({ title, sufix, def, bg }: DefinitionProps) {
   return (
-    <div className="relative w-full max-w-[980px] h-auto flex flex-col gap-y-20">
+    <div className="relative w-full max-w-[980px] h-auto flex flex-col gap-y-20 overflow-hidden">
       <div className='z-10'>
         <h2 className='text-def-title leading-tight'>{title}</h2>
         <p className='text-def-subtitle'>{sufix}</p>
@@ -22,7 +22,7 @@ export default function DefinitionClient({ title, sufix, def, bg }: DefinitionPr
         alt='movie'
         width={980}
         height={400}
-        className='h-full absolute top-0 left-0 opacity-20 grayscale'
+        className='absolute object-cover top-0 left-0 opacity-20 grayscale'
         src={bg}
       />
       {

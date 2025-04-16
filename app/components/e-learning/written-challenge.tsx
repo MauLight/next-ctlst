@@ -5,6 +5,7 @@ import ComponentWrapper from '../common/component-wrapper'
 import { BaseEditor, createEditor, Descendant } from 'slate'
 import { Slate, Editable, withReact, ReactEditor } from 'slate-react'
 import { useDebouncedCallback } from 'use-debounce'
+import { motion } from 'motion/react'
 
 interface WrittenChallengeProps {
     callback: () => void
@@ -33,19 +34,33 @@ const initialValue: Descendant[] = [
 
 export default function WrittenChallenge({ callback, noBorder, title, instructions }: WrittenChallengeProps): ReactNode {
 
+    const [error, setError] = useState<boolean>(false)
     const [editor] = useState(() => withReact(createEditor()))
     const [saving, setSaving] = useState<boolean>(false)
 
+    function handleSubmit() {
+        if (editor.children.length > 1) {
+            callback()
+        } else {
+            setError(true)
+        }
+    }
+
     const debouncedSave = useDebouncedCallback((value) => {
-        setSaving(true)
-        console.log(value)
-        console.log('saved!')
+        if (editor.children.length > 1) {
+            setSaving(true)
+            console.log(value)
 
-        setTimeout(() => {
+            if (error) {
+                setError(false)
+            }
 
-            setSaving(false)
+            setTimeout(() => {
 
-        }, 2000)
+                setSaving(false)
+
+            }, 2000)
+        }
 
     }, 2000)
 
@@ -80,7 +95,19 @@ export default function WrittenChallenge({ callback, noBorder, title, instructio
                         />
                     </Slate>
 
-                    <button onClick={callback} className='ml-auto px-4 h-10 border border-sky-500 text-sky-400 rounded-[6px] mt-5'>Submit</button>
+                    <div className="flex justify-between items-center">
+                        {
+                            error && (
+                                <motion.small
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                    className='text-red-500'
+                                >Please answer before submitting.</motion.small>
+                            )
+                        }
+                        <button onClick={handleSubmit} className={`ml-auto px-4 h-10 border ${error ? 'border-red-500 text-red-500' : 'border-sky-500 text-sky-400'} rounded-[6px] mt-5 transition-color duration-300`}>Submit</button>
+                    </div>
 
                 </div>
 

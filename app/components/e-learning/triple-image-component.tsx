@@ -5,26 +5,7 @@ import { useState, type ReactNode } from 'react'
 import { motion } from 'motion/react'
 import { Switch } from '../common/switch'
 
-const images = [
-    {
-        text1: 'Sand',
-        text2: 'Soft',
-        id: 'a1',
-        image: 'https://images.unsplash.com/photo-1740004731264-3cde5c198cc2'
-    },
-    {
-        text1: 'Mountain',
-        text2: 'Cold',
-        id: 'b2',
-        image: 'https://images.unsplash.com/photo-1734630630491-458df4f38213'
-    },
-    {
-        text1: 'Water',
-        text2: 'Refreshing',
-        id: 'c3',
-        image: 'https://images.unsplash.com/photo-1738694114013-4a92b1851d3b'
-    },
-]
+interface TripleImageProps { showSwitch?: boolean, images: Array<Record<string, string>> }
 
 const containerVariants = {
     initial: {},
@@ -39,17 +20,21 @@ const childVariants = {
     }
 }
 
-export default function TripleImageComponent(): ReactNode {
+export default function TripleImageComponent({ images, showSwitch }: TripleImageProps): ReactNode {
 
     const [clicked, setClicked] = useState<boolean>(false)
 
     return (
         <>
-            <div className="w-full h-[100px] flex justify-center items-start gap-x-5">
-                <p>Concrete</p>
-                <Switch clicked={clicked} handleClick={() => { setClicked(!clicked) }} />
-                <p>Abstract</p>
-            </div>
+            {
+                showSwitch && (
+                    <div className="w-full h-[100px] flex justify-center items-start gap-x-5">
+                        <p>Concrete</p>
+                        <Switch clicked={clicked} handleClick={() => { setClicked(!clicked) }} />
+                        <p>Abstract</p>
+                    </div>
+                )
+            }
             <div className='w-full h-[400px] grid grid-cols-3 gap-x-10'>
                 {
                     images.map((image, i) => (

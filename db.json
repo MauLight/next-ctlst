@@ -50,6 +50,11 @@
           "id": "d4",
           "text": "The right words",
           "completion": 90
+        },
+        {
+          "id": "e5",
+          "text": "It's about symbols",
+          "completion": 90
         }
       ]
     },
