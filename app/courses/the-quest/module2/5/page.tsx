@@ -149,15 +149,15 @@ export default function Page(): ReactNode {
 
             <div className='w-full flex justify-center items-center'>
                 <ComponentWrapper>
-                    <Paragraph text="But what if I do this?" />
+                    <Paragraph text="But what if I use an image to talk about a word?" />
                 </ComponentWrapper>
             </div>
 
-            <ComparisonComponent size={[256.5, 485.75]} word='passion ' image='https://res.cloudinary.com/maulight/image/upload/v1744769534/outvdkusropxr3psgqer.png' labels={['signifier', 'signified']} />
+            <ComparisonComponent reverse size={[256.5, 485.75]} word='passion ' image='https://res.cloudinary.com/maulight/image/upload/v1744769534/outvdkusropxr3psgqer.png' labels={['signifier', 'signified']} />
 
             <div className='w-full flex justify-center items-center'>
                 <ComponentWrapper>
-                    <Paragraph text="In this case, the relation between the signifier (passion) and the image of a flower (signified) is not immediately equivalent." />
+                    <Paragraph text="In this case, the relation between the signifier (flower) and the word passion (signified) is not immediately equivalent." />
                     <Paragraph text="It is through cultural context that we know roses are connected with passion." />
                     <Paragraph text="In other words, we have to interpret the equivalence between them." />
                 </ComponentWrapper>
