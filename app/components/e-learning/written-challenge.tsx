@@ -8,7 +8,7 @@ import { useDebouncedCallback } from 'use-debounce'
 import { motion } from 'motion/react'
 
 interface WrittenChallengeProps {
-    callback: () => void
+    callback?: () => void
     noBorder?: boolean
     title: string
     instructions: Array<string>
@@ -39,7 +39,7 @@ export default function WrittenChallenge({ callback, noBorder, title, instructio
     const [saving, setSaving] = useState<boolean>(false)
 
     function handleSubmit() {
-        if (editor.children.length > 1) {
+        if (editor.children.length > 1 && callback) {
             callback()
         } else {
             setError(true)

@@ -28,7 +28,7 @@
       "id": "b2",
       "module": {
         "number": 2,
-        "title": "The Basics of Story"
+        "title": "The art of creating meaning"
       },
       "lessons": [
         {
@@ -55,11 +55,40 @@
           "id": "e5",
           "text": "It's about symbols",
           "completion": 90
+        },
+        {
+          "id": "f6",
+          "text": "Are you ready?",
+          "completion": 90
         }
       ]
     },
     {
       "id": "c3",
+      "module": {
+        "number": 3,
+        "title": "The dramatic basis of story"
+      },
+      "lessons": [
+        {
+          "id": "a1",
+          "text": "The unity",
+          "completion": 90
+        },
+        {
+          "id": "b2",
+          "text": "About the movie industry.",
+          "completion": 90
+        },
+        {
+          "id": "c3",
+          "text": "Is this course for you?",
+          "completion": 90
+        }
+      ]
+    },
+    {
+      "id": "d4",
       "module": {
         "number": 3,
         "title": "The Character Arc"
