@@ -168,3 +168,7 @@ body {
 .text-button {
   @apply text-sky-600 text-[0.9rem] outline-0 focus:border-b;
 }
+
+.react-flow__attribution {
+  display: none;
+}

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@xyflow/react": "^12.4.4",
+    "@xyflow/react": "^12.6.0",
     "axios": "^1.8.4",
     "hamburger-react": "^2.5.2",
     "motion": "^12.4.10",
@@ -19,6 +19,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-typed": "^2.0.12",
+    "react-use-measure": "^2.1.7",
     "slate-react": "^0.112.1",
     "use-debounce": "^10.0.4"
   },
